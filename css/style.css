@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  padding: 3rem; }
+
+.u-margin-bottom-lg {
+  margin-bottom: 6rem !important; }
+
+/*
+0 - 600px: Phone
+600px - 900px: Tablet - Portrait Mode
+900px - 1200px: Tablet - Landscape Mode
+1200px - 1800px: Desktop || Normal styles apply here.
+1800px+: Big Screen
+
+$breakpoint argument choices
+- phone
+- tab-port
+- tab-land
+-big-desktop
+
+ORDER: Base + Typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^='col-'] {
+    float: left; }
+    .row [class^='col-']:not(:last-child) {
+      margin-right: 6rem; }
+      @media (max-width: 56.25em) {
+        .row [class^='col-']:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^='col-'] {
+        width: 100% !important; } }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) /2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) /3); }
+  .row .col-2-of-3 {
+    width: calc(((100% - 2 * 6rem) /3) * 2 + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) /4); }
+  .row .col-2-of-4 {
+    width: calc(((100% - 3 * 6rem) /4) * 2 + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(((100% - 3 * 6rem) /4) * 3 + 2 * 6rem); }
+
+.header {
+  height: 25vh;
+  position: relative;
+  background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url("../img/header-img-2.jpg");
+  background-size: cover; }
+
+.primary__display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%; }
+
+.amnt-box {
+  padding: 5rem; }
+
+.user__input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.1); }
+  .user__input--center {
+    text-align: center; }
+
+.expense-income {
+  height: 50vh;
+  padding: 5rem; }
+  .expense-income .income {
+    padding-right: 5rem; }
+
+.line-item {
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  transition: all .5s; }
+  .line-item:not(:last-child) {
+    margin-bottom: 4rem;
+    border-bottom: 2px solid rgba(136, 136, 136, 0.5); }
+  .line-item .description {
+    float: left;
+    width: 75%;
+    font-weight: 500; }
+  .line-item .cost {
+    margin-right: 0;
+    font-weight: 700; }
+    .line-item .cost--income {
+      color: #649d66; }
+    .line-item .cost--debt {
+      color: #c81912; }
+  .line-item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #e0e0e0;
+    border: none;
+    transform: scale(1.1); }
+
+.heading__primary {
+  font-size: 2rem;
+  text-transform: uppercase;
+  position: relative; }
+  .heading__primary--income {
+    color: #06623b; }
+  .heading__primary--expense {
+    color: #c81912; }
+  .heading__primary::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-bottom: 3px solid rgba(136, 136, 136, 0.5); }
+
+.amnt-box {
+  font-size: 5rem;
+  font-weight: 500;
+  text-align: center;
+  color: #ffff; }
+
+.form__input {
+  padding: 1.2rem;
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  font-family: inherit;
+  color: inherit; }
+  .form__input:hover, .form__input:focus {
+    border: none;
+    outline: none; }
+  .form__input--desc {
+    width: 35%; }
+  .form__input--value {
+    width: 10%; }
+    .form__input--value::-webkit-inner-spin-button, .form__input--value::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+  .form__input:not(:last-child) {
+    margin-right: 1rem; }

@@ -1,0 +1,32 @@
+.header {
+  height: 25vh;
+  position: relative;
+  background-image: linear-gradient(to bottom right, rgba($color-black, 0.6), rgba($color-black, 0.5))
+  ,url('../img/header-img-2.jpg');
+  background-size: cover;
+}
+
+.primary__display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+.amnt-box {
+  padding: 5rem;
+}
+
+.user__input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba($color-black, 0.1);
+
+  &--center {
+    text-align: center;
+  }
+}

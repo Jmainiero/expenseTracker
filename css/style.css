@@ -110,12 +110,13 @@ ORDER: Base + Typography > general layout + grid > page layout > components
   .line-item:not(:last-child) {
     margin-bottom: 4rem;
     border-bottom: 2px solid rgba(136, 136, 136, 0.5); }
+  .line-item p {
+    display: inline-block; }
   .line-item .description {
-    float: left;
-    width: 75%;
+    width: 70%;
     font-weight: 500; }
   .line-item .cost {
-    margin-right: 0;
+    width: 25%;
     font-weight: 700; }
     .line-item .cost--income {
       color: #649d66; }
@@ -126,6 +127,11 @@ ORDER: Base + Typography > general layout + grid > page layout > components
     background-color: #e0e0e0;
     border: none;
     transform: scale(1.1); }
+  .line-item .trash {
+    font-size: 2rem;
+    opacity: 0.5; }
+    .line-item .trash:hover {
+      cursor: pointer; }
 
 .heading__primary {
   font-size: 2rem;

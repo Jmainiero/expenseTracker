@@ -8,15 +8,16 @@
     border-bottom: 2px solid rgba($color-grey-light-2, 0.5);
   }
 
+  p {
+    display: inline-block;
+  }
   .description {
-    float: left;
-    width: 75%;
+    width: 70%;
     font-weight: 500;
   }
 
   .cost {
-    margin-right: 0;
-    // float: right;
+    width: 25%;
     font-weight: 700;
 
     &--income {
@@ -33,6 +34,14 @@
     background-color: #e0e0e0;
     border: none;
     transform: scale(1.1);
+  }
+  
+  .trash {
+    font-size: 2rem;
+    opacity: 0.5;
+  &:hover {
+    cursor: pointer;
+  }
   }
 }
 
@@ -57,4 +66,5 @@
   position: absolute;
   border-bottom: 3px solid rgba($color-grey-light-2, 0.5);
   }
+
 }

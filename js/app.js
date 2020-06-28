@@ -85,6 +85,8 @@ const modList = (vType, desc, amnt) => {
 window.onload = () => {
   getStg();
   document.querySelector('.amnt').innerHTML = vcontrol.diff();
+  document.querySelector('.heading__secondary--income').innerHTML = vcontrol.income().toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  document.querySelector('.heading__secondary--expense').innerHTML = vcontrol.debt().toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 };
 
 //Control user input
@@ -96,15 +98,16 @@ document.addEventListener('keypress', (evt) => {
     if (vType === '' || desc === '' || amnt === '') {
       alert('Please ensure you\'ve entered valid values for each item');
     } else {
-      console.log(`Positive or negative? ${vType} and the desc is ${desc} and the amount is ${amnt}`);
       modList(vType, desc, amnt);
       setStg();
       document.querySelector('.amnt').innerHTML = vcontrol.diff();
+      document.querySelector('.heading__secondary--income').innerHTML = vcontrol.income().toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+      document.querySelector('.heading__secondary--expense').innerHTML = vcontrol.debt().toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     }
   }
 });
 
-
+//.trash does not load with page, keep looking for .trash to add eventListeners
 const intv = setInterval(() => {
   if (document.querySelectorAll('.trash').length > 0) {
     clearInterval(intv);

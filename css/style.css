@@ -14,6 +14,12 @@ body {
 .u-margin-bottom-lg {
   margin-bottom: 6rem !important; }
 
+.u-margin-bottom-md {
+  margin-bottom: 4rem !important; }
+
+.u-margin-bottom-sm {
+  margin-bottom: 2rem !important; }
+
 /*
 0 - 600px: Phone
 600px - 900px: Tablet - Portrait Mode
@@ -133,18 +139,24 @@ ORDER: Base + Typography > general layout + grid > page layout > components
     .line-item .trash:hover {
       cursor: pointer; }
 
-.heading__primary {
+.heading__primary, .heading__secondary {
   font-size: 2rem;
   text-transform: uppercase;
-  position: relative; }
-  .heading__primary--income {
+  position: relative;
+  display: inline-block; }
+  .heading__primary--income, .heading__secondary--income {
     color: #06623b; }
-  .heading__primary--expense {
+  .heading__primary--expense, .heading__secondary--expense {
     color: #c81912; }
-  .heading__primary::after {
+
+.heading__secondary {
+  float: right; }
+
+.header__wrapper {
+  position: relative; }
+  .header__wrapper::after {
     content: '';
     display: block;
-    height: 100%;
     width: 100%;
     position: absolute;
     border-bottom: 3px solid rgba(136, 136, 136, 0.5); }

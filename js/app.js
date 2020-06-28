@@ -22,7 +22,8 @@ const vcontrol = {
   diff: function () {
     var x = this.income() - this.debt();
     if (x > 0) {
-      return `+${x}`;
+      // return `+${x}`;
+      return `+${(x).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
     } else {
       return `${x}`;
     }
@@ -30,23 +31,20 @@ const vcontrol = {
 };
 
 //Set LocalStorage
-const setStg = (et) => {
-  if (et === '+') {
-    var inc = document.querySelectorAll('.income .line-item');
-    for (let i = 0; i < inc.length; i++) {
-      objInc[inc[i].querySelector('.description').innerText] = inc[i].querySelector('.cost').innerText.slice(1);
-    }
-    localStorage.setItem('income', JSON.stringify(objInc));
+const setStg = () => {
+  const inc = document.querySelectorAll('.income .line-item');
+  const exp = document.querySelectorAll('.expenses .line-item');
 
-  } else {
-    console.log(et);
-    var exp = document.querySelectorAll('.expenses .line-item');
-    for (let i = 0; i < exp.length; i++) {
-      objExp[exp[i].querySelector('.description').innerText] = exp[i].querySelector('.cost').innerText.slice(1);
-    }
-    localStorage.setItem('expenses', JSON.stringify(objExp));
+  for (let i = 0; i < inc.length; i++) {
+    objInc[inc[i].querySelector('.description').innerText] = inc[i].querySelector('.cost').innerText.slice(1);
+  }
+  for (let i = 0; i < exp.length; i++) {
+    objExp[exp[i].querySelector('.description').innerText] = exp[i].querySelector('.cost').innerText.slice(1);
 
   }
+  localStorage.setItem('expenses', JSON.stringify(objExp));
+  localStorage.setItem('income', JSON.stringify(objInc));
+
 };
 //Load Lists
 const getStg = () => {
@@ -100,7 +98,7 @@ document.addEventListener('keypress', (evt) => {
     } else {
       console.log(`Positive or negative? ${vType} and the desc is ${desc} and the amount is ${amnt}`);
       modList(vType, desc, amnt);
-      setStg(vType);
+      setStg();
       document.querySelector('.amnt').innerHTML = vcontrol.diff();
     }
   }
@@ -114,6 +112,7 @@ const intv = setInterval(() => {
     document.querySelectorAll('.trash').forEach(function (evt, index) {
       evt.addEventListener('mousedown', function (el) {
         this.parentElement.remove();
+        setStg();
       });
     });
   }

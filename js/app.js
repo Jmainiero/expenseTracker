@@ -25,7 +25,7 @@ const vcontrol = {
       // return `+${x}`;
       return `+${(x).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
     } else {
-      return `${x}`;
+      return `${(x).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
     }
   },
 };
@@ -81,21 +81,27 @@ const modList = (vType, desc, amnt) => {
 };
 
 
-//Load difference + Load Lists
-window.onload = () => {
-  getStg();
+const renderBalance = () => {
   document.querySelector('.amnt').innerHTML = vcontrol.diff();
   document.querySelector('.heading__secondary--income').innerHTML = vcontrol.income().toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   document.querySelector('.heading__secondary--expense').innerHTML = vcontrol.debt().toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 };
 
+
+//Load difference + Load Lists
+window.onload = () => {
+  getStg();
+  renderBalance();
+
+};
+
 //Control user input
 document.addEventListener('keypress', (evt) => {
   const vType = document.querySelector('#income-type').value;
-  const desc = document.querySelector('.form__input--desc').value;
-  const amnt = parseInt(document.querySelector('.form__input--value').value, 10);
-  if (evt.keyCode === 13) {
-    if (vType === '' || desc === '' || amnt === '') {
+  let desc = document.querySelector('.form__input--desc').value;
+  let amnt = parseInt(document.querySelector('.form__input--value').value, 10);
+  if (evt.key === 'Enter') {
+    if (desc === '' && amnt === '') {
       alert('Please ensure you\'ve entered valid values for each item');
     } else {
       modList(vType, desc, amnt);
@@ -109,17 +115,16 @@ document.addEventListener('keypress', (evt) => {
 
 //.trash does not load with page, keep looking for .trash to add eventListeners
 const intv = setInterval(() => {
-  if (document.querySelectorAll('.trash').length > 0) {
-    clearInterval(intv);
-    //If user opts to delete item
-    document.querySelectorAll('.trash').forEach(function (evt, index) {
-      evt.addEventListener('mousedown', function (el) {
-        this.parentElement.remove();
-        setStg();
-      });
+  //If user opts to delete item
+  document.querySelectorAll('.trash').forEach(function (evt, index) {
+    evt.addEventListener('mousedown', function (el) {
+      this.parentElement.remove();
+      setStg();
+      renderBalance();
     });
-  }
-}, 2000);
+  });
+  // }
+}, 1000);
 
 
 
